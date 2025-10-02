@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parroquia San Francisco de Sales - Cali</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --salesiano-azul: #e25656;
+            --salesiano-celeste: #e6b3b3;
+            --dorado: #d4af37;
+            --blanco: #ffffff;
+            --gris-claro: #f5f5f5;
+            --gris-texto: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--gris-texto);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--salesiano-azul) 0%, var(--salesiano-celeste) 100%);
+            color: var(--blanco);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/EboFSsA33olNuaXB6hnIPAIB1bUae8IZ7bejysiRh5AG_A?e=WZkgab&download=1') center/cover;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            border: 2px solid var(--blanco);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav button {
+            background: rgba(255,255,255,0.1);
+            color: var(--blanco);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        nav button:hover, nav button.active {
+            background: var(--blanco);
+            color: var(--salesiano-azul);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            min-height: 60vh;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .banner {
+            background: linear-gradient(135deg, var(--salesiano-celeste) 0%, var(--salesiano-azul) 100%);
+            color: var(--blanco);
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,63,127,0.2);
+        }
+
+        .banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-message {
+            background: var(--blanco);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--salesiano-azul);
+        }
+
+        .frase-inspiradora {
+            background: var(--gris-claro);
+            padding: 2rem;
+            border-radius: 10px;
+            font-style: italic;
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--salesiano-azul);
+            margin: 2rem 0;
+            border: 2px solid var(--dorado);
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .link-card {
+            background: var(--blanco);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        }
+
+        .link-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section {
+            background: var(--blanco);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-section h3 {
+            color: var(--salesiano-azul);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid var(--dorado);
+            padding-bottom: 0.5rem;
+        }
+
+        .horarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .horario-card {
+            background: var(--gris-claro);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--salesiano-azul);
+        }
+
+        .horario-card h4 {
+            color: var(--salesiano-azul);
+            margin-bottom: 0.8rem;
+        }
+
+        .grupos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .grupo-card {
+            background: var(--gris-claro);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .grupo-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .grupo-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contacto-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .contacto-item {
+            background: var(--gris-claro);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .contacto-item-icon {
+            font-size: 2rem;
+            color: var(--salesiano-azul);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--salesiano-azul);
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--gris-claro);
+            border-radius: 5px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--salesiano-azul);
+        }
+
+        .btn-primary {
+            background: var(--salesiano-azul);
+            color: var(--blanco);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--salesiano-celeste);
+        }
+
+        .mapa-container {
+            margin-top: 2rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        footer {
+            background: var(--salesiano-azul);
+            color: var(--blanco);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .equipo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .equipo-card {
+            background: var(--gris-claro);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .equipo-card h4 {
+            color: var(--salesiano-azul);
+            margin: 0.5rem 0;
+        }
+
+        .equipo-foto {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--salesiano-azul);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Estilos para las pasarelas de fotos */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .carousel-slides {
+            display: flex;
+            width: 500%; /* Para 5 slides */
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            width: 20%; /* 100% / 5 slides */
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: white;
+        }
+
+        .carousel-prev, .carousel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .carousel-prev:hover, .carousel-next:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 20px;
+        }
+
+        /* Estilos para grupos desplegables */
+        .grupo-accordion {
+            background: var(--blanco);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .grupo-header {
+            background: var(--salesiano-azul);
+            color: white;
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: background 0.3s;
+        }
+
+        .grupo-header:hover {
+            background: var(--salesiano-celeste);
+        }
+
+        .grupo-header h4 {
+            margin: 0;
+            flex: 1;
+        }
+
+        .grupo-toggle {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .grupo-accordion.active .grupo-toggle {
+            transform: rotate(180deg);
+        }
+
+        .grupo-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .grupo-accordion.active .grupo-content {
+            max-height: 300px;
+        }
+
+        .grupo-content-inner {
+            padding: 1.5rem;
+            background: var(--gris-claro);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav button {
+                width: 100%;
+            }
+
+            .banner h2 {
+                font-size: 1.8rem;
+            }
+
+            .carousel-container {
+                height: 200px;
+            }
+
+            .carousel-prev, .carousel-next {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo"></div>
+                <div>
+                    <h1>Parroquia San Francisco de Sales</h1>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Inspectoría San Luis Beltrán COM - Arquidiocesis de Cali - Colombia</p>
+                </div>
+            </div>
+            <nav id="nav">
+                <button onclick="showSection('inicio')" class="active">🏠</button>
+                <button onclick="showSection('parroquia')">🙏 Nuestra Parroquia</button>
+                <button onclick="showSection('horarios')">📅 Horarios</button>
+                <button onclick="showSection('grupos')">👥 Grupos</button>
+                <button onclick="showSection('noticias')">🎉 Noticias</button>
+                <button onclick="showSection('multimedia')">🎥 Multimedia</button>
+                <button onclick="showSection('social')">🤝 Oratorio </button>
+                <button onclick="showSection('contacto')">📞 Contacto</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- INICIO -->
+        <div id="inicio" class="section active">
+            <div class="banner">
+                <h2>¡Bienvenidos a nuestra Comunidad Parroquial!</h2>
+                <p style="font-size: 1.2rem; margin-top: 1rem;">Una parroquia con corazón salesiano en el oriente de Cali</p>
+            </div>
+
+            <div class="welcome-message">
+                <h3 style="color: var(--salesiano-azul); margin-bottom: 1rem;">Mensaje del Párroco</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Queridos hermanos y hermanas en Cristo, es un gozo inmenso recibirlos en nuestra casa parroquial. 
+                    Como comunidad salesiana, seguimos el carisma de San Francisco de Sales y Don Bosco, 
+                    buscando acompañar especialmente a los jóvenes y familias con amor, alegría y esperanza. 
+                    Los invito a ser parte activa de nuestra familia parroquial, donde cada uno es importante 
+                    y llamado a crecer en la fe y el servicio.
+                </p>
+                <p style="margin-top: 1rem; text-align: right; font-style: italic;">
+                    — P. Alvin Beltrán, SDB
+                </p>
+            </div>
+
+            <!-- Pasarela de fotos para Inicio -->
+            <div class="carousel-container" id="carousel-inicio">
+                <div class="carousel-slides">
+                    <div class="carousel-slide" style="background: linear-gradient(rgba(0,63,127,0.3), rgba(0,63,127,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/EdomYQBICi5KpbnHTmwDImcBFXax0-djtvXhNyYuMMflfQ?e=IfNQrj&download=1') center/cover;">
+                    </div>
+                    <div class="carousel-slide" style="background: linear-gradient(rgba(74,159,216,0.3), rgba(74,159,216,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/ESdNXW_tcA9MizXUh1Gcx24BpdNoQA2ETErWe9kTf2Xd2g?e=HYa5Gg&download=1') center/cover;">
+                    </div>
+                    <div class="carousel-slide" style="background: linear-gradient(rgba(212,175,55,0.3), rgba(212,175,55,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/EdAXMKdLynlJixXpto0LkboBaYc4hGlsFIkrM1bGZ7tOJw?e=YQRh5p&download=1') center/cover;">
+                    </div>
+                    <div class="carousel-slide" style="background: linear-gradient(rgba(0,63,127,0.3), rgba(0,63,127,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/ER5sy1Tg8_BKtABbA_pvm5QBAqMrRxcvv_fULlxBlaYo7g?e=YPQ61q&download=1') center/cover;">
+                    </div>
+                </div>
+                <button class="carousel-prev" onclick="changeSlide('carousel-inicio', -1)">❮</button>
+                <button class="carousel-next" onclick="changeSlide('carousel-inicio', 1)">❯</button>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active" onclick="currentSlide('carousel-inicio', 1)"></div>
+                    <div class="carousel-dot" onclick="currentSlide('carousel-inicio', 2)"></div>
+                    <div class="carousel-dot" onclick="currentSlide('carousel-inicio', 3)"></div>
+                    <div class="carousel-dot" onclick="currentSlide('carousel-inicio', 4)"></div>
+                </div>
+            </div>
+
+            <div class="frase-inspiradora">
+                "No temas, porque las almas se ganan con la bondad"
+                <div style="margin-top: 0.5rem; font-size: 0.9rem; font-weight: 600;">
+                    — San Francisco de Sales
+                </div>
+            </div>
+
+            <h3 style="color: var(--salesiano-azul); margin: 2rem 0 1rem;">Enlaces Rápidos</h3>
+            <div class="quick-links">
+                <div class="link-card" onclick="showSection('horarios')">
+                    <div class="link-card-icon">⏰</div>
+                    <h4>Horarios de Misas</h4>
+                    <p>Consulta los horarios de eucaristías y servicios</p>
+                </div>
+                <div class="link-card" onclick="showSection('contacto')">
+                    <div class="link-card-icon">📍</div>
+                    <h4>Ubicación</h4>
+                    <p>Encuéntranos en el oriente de Cali</p>
+                </div>
+                <div class="link-card" onclick="showSection('noticias')">
+                    <div class="link-card-icon">📢</div>
+                    <h4>Próximos Eventos</h4>
+                    <p>Mantente al día con nuestras actividades</p>
+                </div>
+                <div class="link-card" onclick="showSection('grupos')">
+                    <div class="link-card-icon">👨‍👩‍👧‍👦</div>
+                    <h4>Únete a un Grupo</h4>
+                    <p>Participa en nuestra vida comunitaria</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- NUESTRA PARROQUIA -->
+        <div id="parroquia" class="section">
+            <div class="content-section">
+                <h3>Historia de Nuestra Parroquia</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                Anteriormente funcionaba como capilla Jesús de Nazaret perteneciente a la parroquia Nuestra
+                Señora de la Esperanza dirigida por los padres estadounidenses. El P. German Martínez Rodas
+                entrego la capilla a la Arquidiócesis de Cali el 20 de Enero de 1998 para que fuera una nueva
+                Parroquia.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                El 01 de marzo de 1998, con el decreto #189 de la Arquidiócesis de Cali, fue erigida la Parroquia
+                San Francisco de Sales, teniendo como templo parroquial la antigua capilla a Jesús de Nazaret y
+                se le demarca su territorio para la atención pastoral a los feligreses. Fue encomendada
+                inmediatamente a la Comunidad Salesiana por monseñor Isaías Duarte Cansino por medio del
+                P. Vidal Niebles Ordóñez (Provincial de La Inspectoría San Luís Beltrán - Medellín).
+                El cual delegó como primer párroco al P. Carlos Montalvo Lenis sdb, los Vicarios:
+                P. Jorge Iván Pérez, sdb. y P. Alvin Beltrán, sdb.
+                </p>
+            </div>
+
+            <!-- Pasarela de fotos para Nuestra Parroquia -->
+            <div class="carousel-container" id="carousel-parroquia">
+                <div class="carousel-slides" style="width: 400%;">
+                    <div class="carousel-slide" style="width: 25%; background: linear-gradient(rgba(0,63,127,0.3), rgba(0,63,127,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/Ebv6t7QUx3tJqmH4Gbh099MBr1AWmJY31_2UeDC1ep7UsQ?e=N8Apam&download=1') center/cover;">
+                    </div>
+                    <div class="carousel-slide" style="width: 25%; background: linear-gradient(rgba(74,159,216,0.3), rgba(74,159,216,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/EWPyF9EEwu1JnPWiNq82X0MBSzLsIjROW78snaI2hm1duw?e=tOMrZy&download=1') center/cover;">
+                    </div>
+                    <div class="carousel-slide" style="width: 25%; background: linear-gradient(rgba(212,175,55,0.3), rgba(212,175,55,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/ETHQ6qnH2bdDrMYUVSL84FABmvftmaSnQpKRan-KX2T6Vw?e=xfeN2F&download=1') center/cover;">
+                    </div>
+                    <div class="carousel-slide" style="width: 25%; background: linear-gradient(rgba(0,63,127,0.3), rgba(0,63,127,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/ESMHq-ry8cRBlEpghMk-3vMB6M9EBEmY1NPIUg_QsrybHA?e=Yqz90t&download=1') center/cover;">
+                    </div>
+                </div>
+                <button class="carousel-prev" onclick="changeSlide('carousel-parroquia', -1)">❮</button>
+                <button class="carousel-next" onclick="changeSlide('carousel-parroquia', 1)">❯</button>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active" onclick="currentSlide('carousel-parroquia', 1)"></div>
+                    <div class="carousel-dot" onclick="currentSlide('carousel-parroquia', 2)"></div>
+                    <div class="carousel-dot" onclick="currentSlide('carousel-parroquia', 3)"></div>
+                    <div class="carousel-dot" onclick="currentSlide('carousel-parroquia', 4)"></div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Identidad Salesiana</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                    Somos una parroquia con corazón salesiano. Nuestra espiritualidad se caracteriza por:
+                </p>
+                <ul style="margin-top: 1rem; margin-left: 2rem; font-size: 1.1rem; line-height: 2;">
+                    <li><strong>Alegría:</strong> La alegría es signo de un corazón que ama a Dios</li>
+                    <li><strong>Amabilidad:</strong> Trato bondadoso inspirado en San Francisco de Sales</li>
+                    <li><strong>Cercanía con los jóvenes:</strong> Acompañamiento especial a la juventud</li>
+                    <li><strong>Servicio:</strong> Compromiso con los más necesitados</li>
+                    <li><strong>Familia:</strong> Ambiente familiar y acogedor</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>Equipo Parroquial</h3>
+                <div class="equipo-grid">
+                    <div class="equipo-card">
+                        <div class="equipo-foto" style="background-image: url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/EZWygmOV6GhEnrcf_fCv94wBQm3xvOOF3NGs6ZArkDADLg?e=QFzfhM&download=1');"></div>
+                        <h4>P. Alvin Beltrán, sdb</h4>
+                        <p>Párroco</p>
+                    </div>
+                    <div class="equipo-card">
+                        <div class="equipo-foto" style="background-image: url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/ESXU1lxMInhIpeNj32UkpTQB9dgn43U6VcjROz-l8YiOvw?e=CogmUX&download=1');"></div>
+                        <h4>P. Luis Alberto Giraldo, sdb</h4>
+                        <p>Vicario Parroquial</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Capillas Dependientes</h3>
+                <div style="background: var(--gris-claro); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                    <h4 style="color: var(--salesiano-azul);">Capilla San Pío de Pietrelcina</h4>
+                    <p style="margin-top: 0.5rem;">Una comunidad de fe que complementa nuestra labor pastoral en el sector.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- HORARIOS -->
+        <div id="horarios" class="section">
+            <div class="content-section">
+                <h3>Horarios de Eucaristías</h3>
+                <div class="horarios-grid">
+                    <div class="horario-card">
+                        <h4>Lunes a Viernes</h4>
+                        <p>🌅 7:00 AM</p>
+                        <p>🌆 6:00 PM</p>
+                    </div>
+                    <div class="horario-card">
+                        <h4>Sábados</h4>
+                        <p>🌅 7:00 AM</p>
+                        <p>🌆 6:00 PM</p>
+                    </div>
+                    <div class="horario-card">
+                        <h4>Domingos</h4>
+                        <p>🌅 8:00 AM</p>
+                        <p>☀️ 11:00 AM</p>
+                        <p>🌆 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Sacramentos</h3>
+                <div class="horarios-grid">
+                    <div class="horario-card">
+                        <h4>Bautismo</h4>
+                        <p>📅 Preparación: Primer sábado del mes</p>
+                        <p>💒 Celebración: Domingos 11:00 AM</p>
+                        <p>📋 Inscripción previa en despacho parroquial</p>
+                    </div>
+                    <div class="horario-card">
+                        <h4>Catequesis Primera Comunión</h4>
+                        <p>📚 Horario: Sábados 2:00 PM</p>
+                        <p>⏱️ Duración: 10 meses</p>
+                        <p>👦 Edad mínima: 8 años</p>
+                    </div>
+                    <div class="horario-card">
+                        <h4>Catequesis de Confirmación</h4>
+                        <p>📚 Horario: Sábados 2:00 PM</p>
+                        <p>⏱️ Duración: 10 meses</p>
+                        <p>👨‍🎓 A partir de 12 años</p>
+                    </div>
+                    <div class="horario-card">
+                        <h4>Matrimonio</h4>
+                        <p>💑 Preparación obligatoria</p>
+                        <p>📅 Curso prematrimonial</p>
+                        <p>📋 Solicitar con 2 meses de anticipación</p>
+                    </div>
+                    <div class="horario-card">
+                        <h4>Confesiones</h4>
+                        <p>🕐 Lunes a Viernes: 5:30 - 6:00 PM</p>
+                        <p>🕑 Sábados: 5:00 - 6:00 PM</p>
+                        <p>✝️ O con cita previa</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Atención Parroquial</h3>
+                <div class="horario-card">
+                    <h4>Horario de Despacho</h4>
+                    <p>📅 Lunes a Viernes: 9:00 AM - 12:00 PM y 3:00 PM - 6:00 PM</p>
+                    <p>📅 Sábados: 9:00 AM - 12:00 PM</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Devociones Especiales</h3>
+                <div class="horarios-grid">
+                    <div class="horario-card">
+                        <h4>Hora Santa</h4>
+                        <p>Primer viernes de cada mes - 7:00 PM</p>
+                    </div>
+                    <div class="horario-card">
+                        <h4>Santo Rosario</h4>
+                        <p>Lunes a Viernes - 5:30 PM</p>
+                    </div>
+                    <div class="horario-card">
+                        <h4>Novenas Especiales</h4>
+                        <p>Según el calendario litúrgico</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRUPOS PARROQUIALES -->
+        <div id="grupos" class="section">
+            <div class="content-section">
+                <h3>Grupos y Movimientos Parroquiales</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    ¡Te invitamos a ser parte de nuestra comunidad! Contamos con diversos grupos donde podrás 
+                    crecer en la fe, servir y crear lazos de amistad.
+                </p>
+
+                <!-- Pasarela de fotos para Grupos -->
+                <div class="carousel-container" id="carousel-grupos">
+                    <div class="carousel-slides" style="width: 900%;">
+                        <div class="carousel-slide" style="width: 11.11%; background: linear-gradient(rgba(0,63,127,0.3), rgba(0,63,127,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/EX8d5WYqt89GjAS7WFeyGOQBUeqFmqbLb1MwK58UetcYKg?e=ERqBPv&download=1') center/cover;">
+                        </div>
+                        <div class="carousel-slide" style="width: 11.11%; background: linear-gradient(rgba(74,159,216,0.3), rgba(74,159,216,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/EY8mAqtYDMlBrJtuYbNDUJsBiksxrje_hRUhQPi_YRZ38Q?e=dNBqVz&download=1') center/cover;">
+                        </div>
+                        <div class="carousel-slide" style="width: 11.11%; background: linear-gradient(rgba(212,175,55,0.3), rgba(212,175,55,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/EVdQ81vd4UhBlwo_am1HCLIBnjXnJQM8c-VDXezmZJ__eg?e=N3fQw5&download=1') center/cover;">
+                        </div>
+                        <div class="carousel-slide" style="width: 11.11%; background: linear-gradient(rgba(0,63,127,0.3), rgba(0,63,127,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/ESshHWnzGNtEiFp0FdahR-4BTC22OqIhEn6JqSAkBcDccg?e=xqDgUG&download=1') center/cover;">
+                        </div>
+                        <div class="carousel-slide" style="width: 11.11%; background: linear-gradient(rgba(74,159,216,0.3), rgba(74,159,216,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/EeuIpuTetK5FiAQWQ6_a5EABvH6ZaIs7rIvPsLxC5tAyyQ?e=lT1oVu&download=1') center/cover;">
+                        </div>
+                        <div class="carousel-slide" style="width: 11.11%; background: linear-gradient(rgba(212,175,55,0.3), rgba(212,175,55,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/EVdQ81vd4UhBlwo_am1HCLIBnjXnJQM8c-VDXezmZJ__eg?e=NDLEEo&download=1') center/cover;">
+                        </div>
+                        <div class="carousel-slide" style="width: 11.11%; background: linear-gradient(rgba(0,63,127,0.3), rgba(0,63,127,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/Ebbb0y44h05MoXZwL_Wab6EBMsf0Mup7YsmOtv7n16Hk9g?e=2zAMuv&download=1') center/cover;">
+                        </div>
+                        <div class="carousel-slide" style="width: 11.11%; background: linear-gradient(rgba(74,159,216,0.3), rgba(74,159,216,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/EaV6-KViyj9JiU7nV3MWwzYBMAHdt2t5YiCvsq2xh0U2kw?e=zVdeE9&download=1') center/cover;">
+                        </div>
+                        <div class="carousel-slide" style="width: 11.11%; background: linear-gradient(rgba(212,175,55,0.3), rgba(212,175,55,0.3)), url('https://piasociedadsalesianos-my.sharepoint.com/:i:/g/personal/comunicaciones_ccdb_salesianos_edu_co/ERk0ZvipnNJBvLEm2nUzDqABod7UF6n9u0bpUEWhHYJ3dg?e=ceiZn9&download=1') center/cover;">
+                        </div>
+                    </div>
+                    <button class="carousel-prev" onclick="changeSlide('carousel-grupos', -1)">❮</button>
+                    <button class="carousel-next" onclick="changeSlide('carousel-grupos', 1)">❯</button>
+                    <div class="carousel-nav">
+                        <div class="carousel-dot active" onclick="currentSlide('carousel-grupos', 1)"></div>
+                        <div class="carousel-dot" onclick="currentSlide('carousel-grupos', 2)"></div>
+                        <div class="carousel-dot" onclick="currentSlide('carousel-grupos', 3)"></div>
+                        <div class="carousel-dot" onclick="currentSlide('carousel-grupos', 4)"></div>
+                        <div class="carousel-dot" onclick="currentSlide('carousel-grupos', 5)"></div>
+                        <div class="carousel-dot" onclick="currentSlide('carousel-grupos', 6)"></div>
+                        <div class="carousel-dot" onclick="currentSlide('carousel-grupos', 7)"></div>
+                        <div class="carousel-dot" onclick="currentSlide('carousel-grupos', 8)"></div>
+                        <div class="carousel-dot" onclick="currentSlide('carousel-grupos', 9)"></div>
+                    </div>
+                </div>
+
+                <!-- Grupos con formato accordion desplegable -->
+                <div class="grupo-accordion" onclick="toggleGrupo(this)">
+                    <div class="grupo-header">
+                        <div class="grupo-icon">🎸</div>
+                        <h4>Grupo Juvenil</h4>
+                        <div class="grupo-toggle">▼</div>
+                    </div>
+                    <div class="grupo-content">
+                        <div class="grupo-content-inner">
+                            <p>Oratorio, grupos juveniles y catequesis para jóvenes. Un espacio de alegría, fe y amistad donde los jóvenes pueden crecer en su relación con Dios y formar lazos de amistad duraderos.</p>
+                            <p style="margin-top: 1rem;"><strong>Reunión:</strong> Sábados 4:00 PM</p>
+                            <p><strong>Contacto:</strong> María Elena Vásquez (Coordinadora) 317 663 68 53</p>
+                            <p><strong>Actividades:</strong> Oratorio, catequesis, retiros, convivencias, servicio social</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grupo-accordion" onclick="toggleGrupo(this)">
+                    <div class="grupo-header">
+                        <div class="grupo-icon">👨‍👩‍👧‍👦</div>
+                        <h4>Pastoral Social</h4>
+                        <div class="grupo-toggle">▼</div>
+                    </div>
+                    <div class="grupo-content">
+                        <div class="grupo-content-inner">
+                            <p>Acciones apostólicas con sentido. Ayudamos en las necesidades materiales y espirituales de la comunidad, llevando el amor de Cristo a los más necesitados.</p>
+                            <p style="margin-top: 1rem;"><strong>Reunión:</strong> Domingos 3:00 PM</p>
+                            <p><strong>Contacto:</strong> Elena Castro (Coordinadora) 317 820 02 20</p>
+                            <p><strong>Actividades:</strong> Visitas a enfermos, apoyo a familias, distribución de alimentos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grupo-accordion" onclick="toggleGrupo(this)">
+                    <div class="grupo-header">
+                        <div class="grupo-icon">📖</div>
+                        <h4>Proclamadores de la Palabra</h4>
+                        <div class="grupo-toggle">▼</div>
+                    </div>
+                    <div class="grupo-content">
+                        <div class="grupo-content-inner">
+                            <p>Ministros de la Palabra que acercamos a Dios a través de la Biblia. Nos formamos continuamente para proclamar la Palabra con fidelidad y amor.</p>
+                            <p style="margin-top: 1rem;"><strong>Formación:</strong> Jueves 6:30 PM</p>
+                            <p><strong>Contacto:</strong> Liliana Fuentes (Coordinadora) 317 804 07 07</p>
+                            <p><strong>Actividades:</strong> Proclamación en misas, formación bíblica, retiros</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grupo-accordion" onclick="toggleGrupo(this)">
+                    <div class="grupo-header">
+                        <div class="grupo-icon">✨</div>
+                        <h4>Salesianos Cooperadores</h4>
+                        <div class="grupo-toggle">▼</div>
+                    </div>
+                    <div class="grupo-content">
+                        <div class="grupo-content-inner">
+                            <p>Laicos que viven el carisma salesiano y colaboran en la misión educativa. Compartimos la espiritualidad de Don Bosco en la vida cotidiana.</p>
+                            <p style="margin-top: 1rem;"><strong>Reunión:</strong> Segundo sábado del mes</p>
+                            <p><strong>Contacto:</strong> Miguel Baena (Coordinador) 317 663 68 53</p>
+                            <p><strong>Actividades:</strong> Formación salesiana, apoyo pastoral, obras sociales</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grupo-accordion" onclick="toggleGrupo(this)">
+                    <div class="grupo-header">
+                        <div class="grupo-icon">🦋</div>
+                        <h4>Asociación de María Auxiliadora</h4>
+                        <div class="grupo-toggle">▼</div>
+                    </div>
+                    <div class="grupo-content">
+                        <div class="grupo-content-inner">
+                            <p>Vivimos el espíritu salesiano mariano con todo el corazón. El rosario es nuestra fuente de gracia y María Auxiliadora nuestra guía.</p>
+                            <p style="margin-top: 1rem;"><strong>Reunión:</strong> Mensual</p>
+                            <p><strong>Contacto:</strong> Samuel Rincón (Coordinador) 317 804 07 07</p>
+                            <p><strong>Actividades:</strong> Rosario, novenas marianas, celebraciones de María Auxiliadora</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grupo-accordion" onclick="toggleGrupo(this)">
+                    <div class="grupo-header">
+                        <div class="grupo-icon">❤️</div>
+                        <h4>Sagrado Corazón de Jesús</h4>
+                        <div class="grupo-toggle">▼</div>
+                    </div>
+                    <div class="grupo-content">
+                        <div class="grupo-content-inner">
+                            <p>Servicio a los más necesitados del sector, visitando enfermos y apoyando familias. Llevamos el amor del Sagrado Corazón a quienes más lo necesitan.</p>
+                            <p style="margin-top: 1rem;"><strong>Reunión:</strong> Sábados 9:00 AM</p>
+                            <p><strong>Contacto:</strong> Enriqueta Vásquez (Coordinadora) 317 804 07 07</p>
+                            <p><strong>Actividades:</strong> Visitas domiciliarias, primeros viernes, adoración</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTICIAS Y EVENTOS -->
+        <div id="noticias" class="section">
+            <div class="content-section">
+                <h3>Próximos Eventos</h3>
+                
+                <div style="background: var(--salesiano-celeste); color: var(--blanco); padding: 2rem; border-radius: 10px; margin: 1.5rem 0;">
+                    <h4 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Fiesta Patronal San Francisco de Sales</h4>
+                    <p style="font-size: 1.1rem;">📅 24 de Enero | 🕐 Todo el día</p>
+                    <p style="margin-top: 1rem;">Celebremos juntos a nuestro santo patrono con eucaristías, procesión y actividades para toda la familia.</p>
+                </div>
+
+                <div class="horarios-grid">
+                    <div class="horario-card">
+                        <h4>Convivencia Juvenil</h4>
+                        <p>📅 Próximo sábado</p>
+                        <p>🕐 8:00 AM - 5:00 PM</p>
+                        <p>📍 Salón parroquial</p>
+                    </div>
+
+                    <div class="horario-card">
+                        <h4>Encuentro de Familias</h4>
+                        <p>📅 Este domingo</p>
+                        <p>🕐 Después de misa de 11:00 AM</p>
+                        <p>📍 Patio parroquial</p>
+                    </div>
+
+                    <div class="horario-card">
+                        <h4>Misión Juvenil</h4>
+                        <p>📅 Próximo mes</p>
+                        <p>🕐 Semana completa</p>
+                        <p>📍 Barrios del sector</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Noticias Recientes</h3>
+                <div style="margin-top: 1.5rem;">
+                    <div style="background: var(--gris-claro); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <h4 style="color: var(--salesiano-azul);">Exitosa jornada de Primera Comunión</h4>
+                        <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">Hace 2 días</p>
+                        <p>Más de 50 niños recibieron por primera vez a Jesús Eucaristía en una hermosa celebración llena de alegría y fe. ¡Felicitaciones a todos los primicomunicantes y sus familias!</p>
+                    </div>
+
+                    <div style="background: var(--gris-claro); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <h4 style="color: var(--salesiano-azul);">Nuevo grupo de catequesis infantil</h4>
+                        <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">Hace 1 semana</p>
+                        <p>Abrimos inscripciones para el nuevo grupo de catequesis. Los esperamos todos los sábados a las 3:00 PM. ¡Ven y crece en la fe!</p>
+                    </div>
+
+                    <div style="background: var(--gris-claro); padding: 1.5rem; border-radius: 8px;">
+                        <h4 style="color: var(--salesiano-azul);">Jornada solidaria en el barrio</h4>
+                        <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">Hace 2 semanas</p>
+                        <p>Gracias a todos los voluntarios que participaron en la jornada de ayuda a familias necesitadas. Juntos construimos una comunidad más solidaria.</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- MULTIMEDIA -->
+        <div id="multimedia" class="section">
+            <div class="content-section">
+                <h3>Transmisión en Vivo</h3>
+                <p style="margin-bottom: 1rem;">Síguenos en nuestras celebraciones a través de YouTube</p>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/vQoB3l4XOlE" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h3>Homilías y Reflexiones</h3>
+                <div class="horarios-grid">
+                    <div class="horario-card">
+                        <h4>Última Homilía Dominical</h4>
+                        <p style="margin: 0.5rem 0;">🎬 Video disponible</p>
+                        <button class="btn-primary" style="margin-top: 0.5rem; padding: 0.5rem 1rem;">Ver Video</button>
+                    </div>
+
+                    <div class="horario-card">
+                        <h4>Reflexión Semanal</h4>
+                        <p style="margin: 0.5rem 0;">📖 Del Evangelio del domingo</p>
+                        <button class="btn-primary" style="margin-top: 0.5rem; padding: 0.5rem 1rem;">Leer Más</button>
+                    </div>
+
+                    <div class="horario-card">
+                        <h4>Catequesis Juvenil</h4>
+                        <p style="margin: 0.5rem 0;">🎥 Videos formativos</p>
+                        <button class="btn-primary" style="margin-top: 0.5rem; padding: 0.5rem 1rem;">Ver Playlist</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+           
+            </div>
+        </div>
+
+        <!-- PASTORAL SOCIAL -->
+        <div id="social" class="section">
+            <div class="content-section">
+                <h3>Compromiso Social Salesiano</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                    Siguiendo el ejemplo de Don Bosco, nuestra parroquia está comprometida con los más necesitados 
+                    del oriente de Cali. Trabajamos especialmente con niños, jóvenes y familias en situación de vulnerabilidad, 
+                    ofreciendo apoyo espiritual, educativo y material.
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h3>TalleresActivos</h3>
+                <div class="grupos-grid">
+                    <div class="grupo-card" style="border-left: 4px solid var(--salesiano-azul);">
+                        <div class="grupo-icon">📚</div>
+                        <h4 style="color: var(--salesiano-azul);">Taller Manualidades</h4>
+                        <p>A traves del trabajo manual se fortalece la autoestima y la confianza de los niños y jóvenes.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Horario:</strong> Sábados, 4:00 PM</p>
+                    </div>
+
+                    <div class="grupo-card" style="border-left: 4px solid var(--salesiano-azul);">
+                        <div class="grupo-icon">⚽</div>
+                        <h4 style="color: var(--salesiano-azul);">Taller deportivo</h4>
+                        <p>A traves del deporte se fortalece la salud y el espiritu de los niños y jóvenes.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Horario:</strong> Sábados, 4:00 PM</p>
+                    </div>
+
+                    <div class="grupo-card" style="border-left: 4px solid var(--salesiano-azul);">
+                        <div class="grupo-icon">🩰</div>
+                        <h4 style="color: var(--salesiano-azul);">Danza Contemporanea</h4>
+                        <p>A traves de la danza se fortalece la creatividad y la expresion de los niños y jóvenes.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Horario:</strong> Sábados, 8:00 AM</p>
+                    </div>
+
+                    <div class="grupo-card" style="border-left: 4px solid var(--salesiano-azul);">
+                        <div class="grupo-icon">💃🏽</div>
+                        <h4 style="color: var(--salesiano-azul);">Danza liturgica</h4>
+                        <p>A través de la danza se alaba a Dios y se enriquece la liturgia.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Horario:</strong> Martes, 7:00 PM</p>
+                    </div>
+
+                    <div class="grupo-card" style="border-left: 4px solid var(--salesiano-azul);">
+                        <div class="grupo-icon">🕯️</div>
+                        <h4 style="color: var(--salesiano-azul);">Grupo Acolitos</h4>
+                        <p>Espacio formativo para los mas pequeños de la parroquia.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Horario:</strong> Sábados 4:00 PM</p>
+                    </div>
+
+                    <div class="grupo-card" style="border-left: 4px solid var(--salesiano-azul);">
+                        <div class="grupo-icon">💼</div>
+                        <h4 style="color: var(--salesiano-azul);">Formacion socioemocional</h4>
+                        <p>Formacion socioemocional de manera transversal que ayuda a los niños y jóvenes a vivir en comunidad.</p>
+                        <p style="margin-top: 0.5rem;"><strong>Servicio:</strong> Permanente</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>¿Cómo Puedes Colaborar?</h3>
+                <div class="horarios-grid">
+                    <div class="horario-card" style="background: linear-gradient(135deg, var(--salesiano-celeste) 0%, var(--salesiano-azul) 100%); color: white;">
+                        <h4>💰 Donaciones</h4>
+                        <p>Aportes económicos, alimentos no perecibles, ropa y útiles escolares.</p>
+                        <p style="margin-top: 0.5rem;">Recepción: Despacho parroquial</p>
+                    </div>
+
+                    <div class="horario-card" style="background: linear-gradient(135deg, var(--salesiano-celeste) 0%, var(--salesiano-azul) 100%); color: white;">
+                        <h4>🤝 Voluntariado</h4>
+                        <p>Únete a nuestro equipo de voluntarios en las diferentes obras sociales.</p>
+                        <p style="margin-top: 0.5rem;">Inscripciones abiertas</p>
+                    </div>
+
+                    <div class="horario-card" style="background: linear-gradient(135deg, var(--salesiano-celeste) 0%, var(--salesiano-azul) 100%); color: white;">
+                        <h4>🏢 Alianzas</h4>
+                        <p>Empresas e instituciones que deseen apoyar nuestros proyectos.</p>
+                        <p style="margin-top: 0.5rem;">Contacta con nosotros</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: var(--gris-claro); padding: 2rem; border-radius: 10px; text-align: center; margin-top: 2rem;">
+                <h4 style="color: var(--salesiano-azul); font-size: 1.5rem; margin-bottom: 1rem;">
+                    "Lo que hicieron por uno de estos hermanos míos más pequeños, lo hicieron por mí"
+                </h4>
+                <p style="font-style: italic;">— Mateo 25, 40</p>
+            </div>
+        </div>
+
+        <!-- CONTACTO -->
+        <div id="contacto" class="section">
+            <div class="content-section">
+                <h3>Información de Contacto</h3>
+                
+                <div class="contacto-info">
+                    <div class="contacto-item">
+                        <div class="contacto-item-icon">📍</div>
+                        <h4>Dirección</h4>
+                        <p>Calle 41 #32A 26</p>
+                        <p>Barrio: El Diamente</p>
+                        <p>Cali, Colombia</p>
+                    </div>
+
+                    <div class="contacto-item">
+                        <div class="contacto-item-icon">📞</div>
+                        <h4>Teléfono</h4>
+                        <p>+57 311 6742635</p>
+                        <p style="margin-top: 0.5rem;">
+                        <a href="https://wa.me/573116742635" style="color: #25D366; text-decoration: none; font-weight: bold;">
+                            💬 WhatsApp
+                        </a>
+                        </p>
+                    </div>
+
+                    <div class="contacto-item">
+                        <div class="contacto-item-icon">✉️</div>
+                        <h4>Correo Electrónico</h4>
+                        <p>parroco.ccdb@salesianos.edu.co</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #666;">
+                            Respondemos en 24-48 horas
+                        </p>
+                    </div>
+
+                    <div class="contacto-item">
+                        <div class="contacto-item-icon">🕐</div>
+                        <h4>Horario de Atención</h4>
+                        <p>Lunes a Viernes</p>
+                        <p>9:00 AM - 12:00 PM</p>
+                        <p>3:00 PM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Formulario de Contacto</h3>
+                <form id="contactForm" onsubmit="enviarFormulario(event)">
+                    <div class="form-group">
+                        <label>Nombre completo *</label>
+                        <input type="text" required placeholder="Tu nombre">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Correo electrónico *</label>
+                        <input type="email" required placeholder="tu@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input type="tel" placeholder="Número de contacto">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Asunto *</label>
+                        <input type="text" required placeholder="Motivo de tu consulta">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mensaje *</label>
+                        <textarea rows="5" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Enviar Mensaje</button>
+                </form>
+            </div>
+
+            <div class="content-section">
+                <h3>Ubicación</h3>
+                <p style="margin-bottom: 1rem;">Encuéntranos en el oriente de Cali</p>
+                <div class="mapa-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.5234567890123!2d-76.5319!3d3.4372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6f0a1234567%3A0x1234567890abcdef!2sCalle%2041%20%2332A-26%2C%20El%20Diamante%2C%20Cali%2C%20Valle%20del%20Cauca%2C%20Colombia!5e0!3m2!1ses!2sco!4v1640995200000"
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                    Parroquia San Francisco de Sales - Barrio El Diamante, Cali
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h3>Síguenos en Redes Sociales</h3>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem;">
+                    <a href="https://www.facebook.com/parroquia.f.desales" target="_blank" style="background: #1877f2; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold;">
+                        📘 Facebook
+                    </a>
+                    <a href="https://www.youtube.com/@ParroquiaSanFranciscodeSalesCa" target="_blank" style="background: #FF0000; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold;">
+                        ▶️ YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <h3 style="margin-bottom: 1rem;">Parroquia San Francisco de Sales</h3>
+        <p>Inspectoría San Luis Beltrán COM - Arquidiocesis de Cali - Colombia</p>
+        <p style="margin-top: 1rem; font-style: italic;">
+            "Da amor y recibirás amor" - San Francisco de Sales
+        </p>
+        <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
+            © 2025 Eyder Jovel. Todos los derechos reservados.
+        </p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Mostrar la sección seleccionada
+            document.getElementById(sectionId).classList.add('active');
+
+            // Actualizar botones activos
+            const buttons = document.querySelectorAll('nav button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Scroll al inicio
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Variables globales para los carruseles
+        let currentSlides = {
+            'carousel-inicio': 0,
+            'carousel-parroquia': 0,
+            'carousel-grupos': 0
+        };
+
+        let slideIntervals = {};
+
+        // Función para cambiar slide
+        function changeSlide(carouselId, direction) {
+            const carousel = document.getElementById(carouselId);
+            const slides = carousel.querySelector('.carousel-slides');
+            const dots = carousel.querySelectorAll('.carousel-dot');
+            const totalSlides = dots.length;
+            
+            // Limpiar intervalo automático
+            if (slideIntervals[carouselId]) {
+                clearInterval(slideIntervals[carouselId]);
+            }
+            
+            currentSlides[carouselId] += direction;
+            
+            if (currentSlides[carouselId] >= totalSlides) {
+                currentSlides[carouselId] = 0;
+            } else if (currentSlides[carouselId] < 0) {
+                currentSlides[carouselId] = totalSlides - 1;
+            }
+            
+            updateCarousel(carouselId);
+            startAutoSlide(carouselId);
+        }
+
+        // Función para ir a slide específico
+        function currentSlide(carouselId, slideIndex) {
+            // Limpiar intervalo automático
+            if (slideIntervals[carouselId]) {
+                clearInterval(slideIntervals[carouselId]);
+            }
+            
+            currentSlides[carouselId] = slideIndex - 1;
+            updateCarousel(carouselId);
+            startAutoSlide(carouselId);
+        }
+
+        // Función para actualizar el carrusel
+        function updateCarousel(carouselId) {
+            const carousel = document.getElementById(carouselId);
+            const slides = carousel.querySelector('.carousel-slides');
+            const dots = carousel.querySelectorAll('.carousel-dot');
+            
+            let slideWidth = 100 / dots.length;
+            if (carouselId === 'carousel-parroquia') {
+                slideWidth = 25; // Para 4 slides
+            } else if (carouselId === 'carousel-grupos') {
+                slideWidth = 11.11; // Para 9 slides
+            } else {
+                slideWidth = 20; // Para 4 slides (carousel-inicio)
+            }
+            
+            const translateX = -currentSlides[carouselId] * slideWidth;
+            slides.style.transform = `translateX(${translateX}%)`;
+            
+            // Actualizar dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlides[carouselId]);
+            });
+        }
+
+        // Función para iniciar slide automático
+        function startAutoSlide(carouselId) {
+            slideIntervals[carouselId] = setInterval(() => {
+                changeSlide(carouselId, 1);
+            }, 4000); // Cambiar cada 4 segundos
+        }
+
+        // Función para toggle de grupos
+        function toggleGrupo(element) {
+            element.classList.toggle('active');
+        }
+
+        // Inicializar carruseles cuando se carga la página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Iniciar slides automáticos para todos los carruseles
+            Object.keys(currentSlides).forEach(carouselId => {
+                if (document.getElementById(carouselId)) {
+                    startAutoSlide(carouselId);
+                }
+            });
+            
+            // Pausar slides automáticos cuando el mouse está sobre el carrusel
+            document.querySelectorAll('.carousel-container').forEach(carousel => {
+                carousel.addEventListener('mouseenter', () => {
+                    const carouselId = carousel.id;
+                    if (slideIntervals[carouselId]) {
+                        clearInterval(slideIntervals[carouselId]);
+                    }
+                });
+                
+                carousel.addEventListener('mouseleave', () => {
+                    const carouselId = carousel.id;
+                    startAutoSlide(carouselId);
+                });
+            });
+        });
+
+        function enviarFormulario(event) {
+            event.preventDefault();
+            alert('¡Gracias por tu mensaje! Te contactaremos pronto.\n\nNota: Este es un formulario de demostración. Para que funcione, debes conectarlo con un servicio de backend o email.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
